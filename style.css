@@ -1,0 +1,48 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#taskList li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+#taskList li span {
+    flex-grow: 1; /* Makes the task text take up available space */
+    margin-right: 10px;
+}
+
+#taskList li button {
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#taskList li.completed span {
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+.deleteBtn {
+    margin-left: 10px;
+}
+            
