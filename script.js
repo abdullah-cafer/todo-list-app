@@ -2,11 +2,13 @@
 const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
+const clearCompletedBtn = document.getElementById('clearCompletedBtn');
 
 // Load tasks from local storage (if any)
 loadTasks();
 
 addTaskBtn.addEventListener('click', addTask);
+clearCompletedBtn.addEventListener('click', clearCompletedTasks);
 
 function addTask() {
     const taskText = taskInput.value.trim();
@@ -39,6 +41,12 @@ function deleteTask(event) {
 function toggleComplete(event) {
     const taskItem = event.target.parentNode;
     taskItem.classList.toggle('completed');
+    saveTasks();
+}
+
+function clearCompletedTasks() {
+    const completedTasks = taskList.querySelectorAll('li.completed');
+    completedTasks.forEach(task => taskList.removeChild(task));
     saveTasks();
 }
 
