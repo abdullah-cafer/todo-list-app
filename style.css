@@ -2,6 +2,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f4;
+    transition: background-color 0.3s ease; /* Add transition for smooth dark mode */
 }
 
 .container {
@@ -9,11 +10,14 @@ body {
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease; /* Add transition for smooth dark mode */
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: #333; /* Default text color */
+    transition: color 0.3s ease; /* Add transition for smooth dark mode */
 }
 
 #taskList li {
@@ -26,6 +30,8 @@ h1 {
 #taskList li span {
     flex-grow: 1; /* Makes the task text take up available space */
     margin-right: 10px;
+    color: #333; /* Default text color */
+    transition: color 0.3s ease; /* Add transition for smooth dark mode */
 }
 
 #taskList li button {
@@ -35,6 +41,8 @@ h1 {
     border: none;
     border-radius: 3px;
     cursor: pointer;
+    margin-left: 20px; /* Move delete button to the right */
+    transition: background-color 0.3s ease; /* Add transition for smooth dark mode */
 }
 
 #taskList li.completed span {
@@ -48,5 +56,22 @@ h1 {
 
 #clearCompletedBtn {
     margin-top: 10px;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #222;
+}
+
+.container.dark-mode {
+    background-color: #333;
+}
+
+h1.dark-mode, #taskList li span.dark-mode {
+    color: #fff;
+}
+
+#taskList li button.dark-mode {
+    background-color: #dc3545;
 }
             

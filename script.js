@@ -3,12 +3,14 @@ const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
 const clearCompletedBtn = document.getElementById('clearCompletedBtn');
+const darkModeToggle = document.getElementById('darkModeToggle');
 
 // Load tasks from local storage (if any)
 loadTasks();
 
 addTaskBtn.addEventListener('click', addTask);
 clearCompletedBtn.addEventListener('click', clearCompletedTasks);
+darkModeToggle.addEventListener('change', toggleDarkMode);
 
 function addTask() {
     const taskText = taskInput.value.trim();
@@ -83,5 +85,13 @@ function loadTasks() {
             taskList.appendChild(newTask);
         });
     }
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    document.querySelector('.container').classList.toggle('dark-mode');
+    document.querySelector('h1').classList.toggle('dark-mode');
+    document.querySelectorAll('#taskList li span').forEach(span => span.classList.toggle('dark-mode'));
+    document.querySelectorAll('#taskList li button').forEach(button => button.classList.toggle('dark-mode'));
 }
             
