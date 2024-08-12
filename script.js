@@ -8,6 +8,12 @@ const darkModeToggle = document.getElementById('darkModeToggle');
 // Load tasks from local storage (if any)
 loadTasks();
 
+// Initialize Sortable.js for drag-and-drop reordering
+Sortable.create(taskList, {
+    animation: 150,
+    onEnd: saveTasks // Save tasks after reordering
+});
+
 addTaskBtn.addEventListener('click', addTask);
 clearCompletedBtn.addEventListener('click', clearCompletedTasks);
 darkModeToggle.addEventListener('change', toggleDarkMode);
@@ -20,11 +26,17 @@ function addTask() {
             <span>${taskText}</span>
             <button class="deleteBtn">Delete</button>
             <input type="checkbox" class="completeCheckbox">
+            <select class="form-control form-control-sm ml-2" id="prioritySelect">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
         `;
 
         // Add event listeners
         newTask.querySelector('.deleteBtn').addEventListener('click', deleteTask);
         newTask.querySelector('.completeCheckbox').addEventListener('change', toggleComplete);
+        newTask.querySelector('#prioritySelect').addEventListener('change', updatePriority);
 
         taskList.appendChild(newTask);
         taskInput.value = "";
@@ -58,7 +70,8 @@ function saveTasks() {
     taskItems.forEach(taskItem => {
         const text = taskItem.querySelector('span').textContent;
         const isCompleted = taskItem.classList.contains('completed');
-        tasks.push({ text, isCompleted });
+        const priority = taskItem.querySelector('#prioritySelect').value;
+        tasks.push({ text, isCompleted, priority });
     });
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
@@ -73,10 +86,16 @@ function loadTasks() {
                 <span>${task.text}</span>
                 <button class="deleteBtn">Delete</button>
                 <input type="checkbox" class="completeCheckbox" ${task.isCompleted ? 'checked' : ''}>
+                <select class="form-control form-control-sm ml-2" id="prioritySelect">
+                    <option value="Low" ${task.priority === 'Low' ? 'selected' : ''}>Low</option>
+                    <option value="Medium" ${task.priority === 'Medium' ? 'selected' : ''}>Medium</option>
+                    <option value="High" ${task.priority === 'High' ? 'selected' : ''}>High</option>
+                </select>
             `;
 
             newTask.querySelector('.deleteBtn').addEventListener('click', deleteTask);
             newTask.querySelector('.completeCheckbox').addEventListener('change', toggleComplete);
+            newTask.querySelector('#prioritySelect').addEventListener('change', updatePriority);
 
             if (task.isCompleted) {
                 newTask.classList.add('completed');
@@ -85,6 +104,16 @@ function loadTasks() {
             taskList.appendChild(newTask);
         });
     }
+}
+
+function updatePriority(event) {
+    const taskItem = event.target.parentNode;
+    const priority = event.target.value;
+
+    // You can add logic here to visually represent priority (e.g., change task color)
+    // ...
+
+    saveTasks();
 }
 
 function toggleDarkMode() {
