@@ -93,5 +93,6 @@ function toggleDarkMode() {
     document.querySelector('h1').classList.toggle('dark-mode');
     document.querySelectorAll('#taskList li span').forEach(span => span.classList.toggle('dark-mode'));
     document.querySelectorAll('#taskList li button').forEach(button => button.classList.toggle('dark-mode'));
+    document.querySelectorAll('#taskList li').forEach(li => li.classList.toggle('dark-mode'));
 }
             

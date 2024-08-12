@@ -2,47 +2,69 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f4;
-    transition: background-color 0.3s ease; /* Add transition for smooth dark mode */
+    transition: background-color 0.3s ease;
+    color: #333; /* Default text color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .container {
     background-color: #fff;
     padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease; /* Add transition for smooth dark mode */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Set a max width for the container */
+    text-align: center; /* Center align text within container */
+    transition: background-color 0.3s ease;
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333; /* Default text color */
-    transition: color 0.3s ease; /* Add transition for smooth dark mode */
+    margin-bottom: 30px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+#taskInput {
+    border-radius: 5px; /* Rounder input field */
+}
+
+#addTaskBtn {
+    border-radius: 5px; /* Rounder button */
+}
+
+#taskList {
+    list-style: none;
+    padding: 0;
 }
 
 #taskList li {
-    padding: 10px;
+    padding: 15px;
     border-bottom: 1px solid #eee;
     display: flex;
     align-items: center;
+    background-color: #f9f9f9; /* Light background for task items */
+    border-radius: 5px; /* Rounder corners for task items */
+    margin-bottom: 5px; /* Add spacing between task items */
 }
 
 #taskList li span {
-    flex-grow: 1; /* Makes the task text take up available space */
+    flex-grow: 1;
     margin-right: 10px;
-    color: #333; /* Default text color */
-    transition: color 0.3s ease; /* Add transition for smooth dark mode */
+    color: #333;
+    transition: color 0.3s ease;
 }
 
 #taskList li button {
-    padding: 5px 10px;
-    background-color: #f44336;
+    padding: 8px 15px;
+    background-color: #dc3545;
     color: white;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-left: 20px; /* Move delete button to the right */
-    transition: background-color 0.3s ease; /* Add transition for smooth dark mode */
+    margin-left: 15px;
+    transition: background-color 0.3s ease;
 }
 
 #taskList li.completed span {
@@ -50,17 +72,16 @@ h1 {
     color: #ccc;
 }
 
-.deleteBtn {
-    margin-left: 10px;
-}
-
 #clearCompletedBtn {
-    margin-top: 10px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
 /* Dark Mode Styles */
 body.dark-mode {
     background-color: #222;
+    color: #fff;
 }
 
 .container.dark-mode {
@@ -72,6 +93,14 @@ h1.dark-mode, #taskList li span.dark-mode {
 }
 
 #taskList li button.dark-mode {
-    background-color: #dc3545;
+    background-color: #f44336;
+}
+
+#taskList li.dark-mode {
+    background-color: #333;
+}
+
+#taskList li.dark-mode span {
+    color: #fff;
 }
             
